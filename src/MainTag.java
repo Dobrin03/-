@@ -2,23 +2,36 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainTag {
-    private HashMap<String, Attributes> mainTag=new HashMap<>();
+    private String name;
+    private Map<Header, Content> mainTag;
 
-    protected MainTag(HashMap<String, Attributes> mainTag){
-        this.mainTag=mainTag;
+    protected MainTag(String name){
+        mainTag=new HashMap<>();
+        this.name=name;
     }
 
-    protected void addInfo(String key, Attributes value){
+    protected void addContent(Header key, Content value){
         mainTag.put(key, value);
+    }
+
+    private boolean checkForRepeat(Header key){
+        for(Map.Entry<Header, Content> tag : mainTag.entrySet()){
+            if(tag.getKey().id.equals(key.id)){
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
     public String toString(){
-        StringBuffer buffer=new StringBuffer();
-        for(Map.Entry<String, Attributes> tag: mainTag.entrySet()) {
-            buffer.append("<").append(tag.getKey()).append("> ").append(tag.getValue().toString())
-                    .append("</").append(tag.getKey()).append(">");
+        StringBuilder builder=new StringBuilder();
+        builder.append("<").append(name).append(">\n");
+        for(Map.Entry<Header, Content> tag: mainTag.entrySet()) {
+            builder.append("\t<").append(tag.getKey().toString()).append(">\n").append(tag.getValue().toString())
+                    .append("\t</").append(tag.getKey().name).append(">\n");
         }
-        return buffer.toString();
+        builder.append("</").append(name).append(">");
+        return builder.toString();
     }
 }

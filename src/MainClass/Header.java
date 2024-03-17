@@ -1,10 +1,12 @@
+package MainClass;
+
 import java.util.Objects;
 
 public class Header {
     protected String name;
     protected String id;
 
-    protected Header(String name, String id){
+    public Header(String name, String id){
         this.name=name;
         this.id=id;
     }
@@ -15,6 +17,6 @@ public class Header {
 
     @Override
     public String toString(){
-        return (name+" id="+id);
+        return (name+" id='"+id+"'");
     }
 }

@@ -1,17 +1,21 @@
+package Files;
+
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
-public class Files {
-    private Path pathName;
+public class FileCreate {
+    private Path pathName = Paths.get("XML files");
     protected File file;
 
-    protected Files( String fileName){
-        file=new File("XML files/"+fileName+".xml");
-
+    protected FileCreate(String fileName){
+        file=new File(pathName+"/"+fileName+".xml");
     }
 
     protected void createFile() throws IOException {
+        Files.createDirectories(pathName);
         if(file.createNewFile()){
             System.out.println("File created successfully");
         }

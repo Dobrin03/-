@@ -1,3 +1,5 @@
+package MainClass;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -5,22 +7,32 @@ public class MainTag {
     private String name;
     private Map<Header, Content> mainTag;
 
-    protected MainTag(String name){
+    public MainTag(String name){
         mainTag=new HashMap<>();
         this.name=name;
     }
 
-    protected void addContent(Header key, Content value){
+    public void addContent(Header key, Content value){
+        checkForRepeatId(key, key.id, 1);
         mainTag.put(key, value);
     }
 
-    private boolean checkForRepeat(Header key){
-        for(Map.Entry<Header, Content> tag : mainTag.entrySet()){
-            if(tag.getKey().id.equals(key.id)){
-                return true;
+    private void checkForRepeatId(Header key, String id, int i){
+        if(!mainTag.isEmpty()) {
+            for (Map.Entry<Header, Content> tag : mainTag.entrySet()) {
+                if(mainTag.containsKey(key)){
+                    continue;
+                }
+
+                if (tag.getKey().id.equals(key.id)) {
+                    tag.getKey().setId(id+"_"+String.valueOf(i));
+                    checkForRepeatId(tag.getKey(), id, i);
+                    ++i;
+                    key.setId(id+"_"+String.valueOf(i));
+                    checkForRepeatId(key, id, i);
+                }
             }
         }
-        return false;
     }
 
     @Override

@@ -1,10 +1,12 @@
+package MainClass;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Content {
     private Map<String, String> attributes;
 
-    protected Content(){
+    public Content(){
         attributes=new HashMap<>();
     }
 

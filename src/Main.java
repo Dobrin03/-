@@ -10,6 +10,10 @@ import java.io.IOException;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) throws IOException {
+        MainTag mainTag = new MainTag(null);
+        ReadFile readFile=new ReadFile("test");
+        readFile.read(mainTag);
 
+        System.out.println(mainTag.toString());
     }
 }

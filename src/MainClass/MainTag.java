@@ -1,7 +1,9 @@
 package MainClass;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MainTag {
     private String name;
@@ -12,26 +14,31 @@ public class MainTag {
         this.name=name;
     }
 
+    public void setName(String name){
+        this.name=name;
+    }
+
     public void addContent(Header key, Content value){
+    if(!mainTag.isEmpty()) {
         checkForRepeatId(key, key.id, 1);
+    }
         mainTag.put(key, value);
     }
 
     private void checkForRepeatId(Header key, String id, int i){
-        if(!mainTag.isEmpty()) {
-            for (Map.Entry<Header, Content> tag : mainTag.entrySet()) {
-                if(mainTag.containsKey(key)){
-                    continue;
-                }
+        List<Header> headers=mainTag.keySet().stream().filter(h->h.id.equals(key.id)).collect(Collectors.toList());
 
-                if (tag.getKey().id.equals(key.id)) {
-                    tag.getKey().setId(id+"_"+String.valueOf(i));
-                    checkForRepeatId(tag.getKey(), id, i);
-                    ++i;
-                    key.setId(id+"_"+String.valueOf(i));
-                    checkForRepeatId(key, id, i);
-                }
-            }
+        if(mainTag.containsKey(key)){
+            headers.remove(key);
+        }
+
+        for(Header header : headers){
+            header.setId(id+"_"+i);
+            ++i;
+            checkForRepeatId(header, id, i);
+            key.setId(id+"_"+i);
+            //++i;
+            checkForRepeatId(header, id, i);
         }
     }
 

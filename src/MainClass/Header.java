@@ -19,4 +19,12 @@ public class Header {
     public String toString(){
         return (name+" id='"+id+"'");
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Header header = (Header) o;
+        return Objects.equals(id, header.id);
+    }
 }

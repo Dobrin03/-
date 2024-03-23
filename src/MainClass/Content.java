@@ -10,7 +10,7 @@ public class Content {
         attributes=new HashMap<>();
     }
 
-    protected void addInfo(String key, String value){
+    public void addInfo(String key, String value){
         attributes.put(key, value);
     }
 

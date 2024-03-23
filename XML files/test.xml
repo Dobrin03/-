@@ -1,4 +1,18 @@
 <people>
-	<perso id='1'>
-	</perso>
+	<person id='1'>
+		<name> Иван </name>
+		<family> Георгиев </family>
+	</person>
+	<person id='1'>
+		<name> Ния </name>
+		<family> Николаева </family>
+	</person>
+	<person id='1'>
+		<name> Иван </name>
+		<family> Георгиев </family>
+	</person>
+	<person id='1'>
+		<name> Ния </name>
+		<family> Николаева </family>
+	</person>
 </people>

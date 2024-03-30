@@ -1,8 +1,6 @@
-import Files.ReadFile;
-import Files.WriteFile;
-import MainClass.Content;
-import MainClass.Header;
-import MainClass.MainTag;
+import files.ReadFile;
+import main_class.MainTag;
+import menu.MenuMap;
 
 import java.io.IOException;
 
@@ -10,10 +8,12 @@ import java.io.IOException;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) throws IOException {
-        MainTag mainTag = new MainTag(null);
+        MenuMap menuMap=new MenuMap();
         ReadFile readFile=new ReadFile("test");
-        readFile.read(mainTag);
+        MainTag mainTag = new MainTag(null);
 
-        System.out.println(mainTag.toString());
+        readFile.read(mainTag);
+        menuMap.executeAction(mainTag, "delete");
+        menuMap.executeAction(mainTag, "print");
     }
 }

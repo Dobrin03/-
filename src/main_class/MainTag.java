@@ -1,4 +1,4 @@
-package MainClass;
+package main_class;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class MainTag {
     private String name;
-    private Map<Header, Content> mainTag;
+    public Map<Header, Content> mainTag;
 
     public MainTag(String name){
         mainTag=new HashMap<>();
@@ -37,8 +37,7 @@ public class MainTag {
             ++i;
             checkForRepeatId(header, id, i);
             key.setId(id+"_"+i);
-            //++i;
-            checkForRepeatId(header, id, i);
+            checkForRepeatId(key, id, i);
         }
     }
 
@@ -47,8 +46,11 @@ public class MainTag {
         StringBuilder builder=new StringBuilder();
         builder.append("<").append(name).append(">\n");
         for(Map.Entry<Header, Content> tag: mainTag.entrySet()) {
-            builder.append("\t<").append(tag.getKey().toString()).append(">\n").append(tag.getValue().toString())
-                    .append("\t</").append(tag.getKey().name).append(">\n");
+            builder.append("\t<").append(tag.getKey().toString()).append(">\n");
+            if(tag.getValue()!=null) {
+                    builder.append(tag.getValue().toString());
+            }
+                    builder.append("\t</").append(tag.getKey().name).append(">\n");
         }
         builder.append("</").append(name).append(">");
         return builder.toString();

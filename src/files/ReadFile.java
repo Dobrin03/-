@@ -1,8 +1,8 @@
-package Files;
+package files;
 
-import MainClass.Content;
-import MainClass.Header;
-import MainClass.MainTag;
+import main_class.Content;
+import main_class.Header;
+import main_class.MainTag;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -48,6 +48,7 @@ public class ReadFile extends FileCreate{
 
             if(data.contains("</"+headerName+">")){
                 mainTag.addContent(header, content);
+                content=new Content();
             }
         }
 

@@ -1,4 +1,4 @@
-package menu.actions;
+package menu.program_actions;
 
 import main_class.Content;
 import main_class.MainTag;

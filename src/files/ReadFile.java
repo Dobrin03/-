@@ -28,7 +28,8 @@ public class ReadFile {
         }
     }
 
-    public void action(MainTag mainTag){
+    public MainTag action(){
+        MainTag mainTag=new MainTag(null);
         Header header = null;
         Content content = new Content();
 
@@ -72,5 +73,6 @@ public class ReadFile {
         }
 
         fileReader.close();
+        return mainTag;
     }
 }

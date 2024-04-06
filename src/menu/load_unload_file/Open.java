@@ -1,17 +1,18 @@
-package menu.items;
+package menu.load_unload_file;
 
 import files.ReadFile;
 import main_class.MainTag;
 import menu.file_actions.SaveInSameFile;
+import menu.items.Action;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Open implements Action{
-    SaveInSameFile save;
+public class Open implements MainTagState {
     @Override
-    public void action(MainTag mainTag, Scanner scanner) throws IOException {
+    public MainTag changeState(Scanner scanner) throws IOException {
+        MainTag mainTag = null;
         System.out.println("Въведете път на файла: ");
         String path=scanner.nextLine();
 
@@ -20,8 +21,8 @@ public class Open implements Action{
 
         ReadFile read=new ReadFile(name, path);
         if(read.file.exists()) {
-            read.action(mainTag);
-            save=new SaveInSameFile(name, path);
+            mainTag=read.action();
         }
+        return mainTag;
     }
 }

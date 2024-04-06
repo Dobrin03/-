@@ -2,6 +2,8 @@ package menu;
 
 import main_class.MainTag;
 import menu.items.*;
+import menu.load_unload_file.Close;
+import menu.load_unload_file.Open;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -10,10 +12,7 @@ import java.util.Scanner;
 
 public class MenuMap {
     private Map<String, Action> menuMap = new HashMap<>();
-    private Action open=new Open();
-    private Action save=new Save();
     private Action saveAs=new SaveAs();
-    private Action close=new Close();
     private Action print=new Print();
     private Action select=new Select();
     private Action set=new Set();
@@ -25,10 +24,7 @@ public class MenuMap {
     private Action exit=new Exit();
 
     public MenuMap(){
-        menuMap.put("open", open);
-        menuMap.put("save", save);
         menuMap.put("saveas", saveAs);
-        menuMap.put("close", close);
         menuMap.put("print", print);
         menuMap.put("select", select);
         menuMap.put("set", set);
@@ -42,7 +38,7 @@ public class MenuMap {
 
     public void executeAction(MainTag mainTag, String key, Scanner scanner) throws IOException {
         if (menuMap.containsKey(key)) {
-            if (mainTag.name != null || key.compareToIgnoreCase("exit")==0
+            if (mainTag!= null || key.compareToIgnoreCase("exit")==0
                     || key.compareToIgnoreCase("open")==0) {
                 menuMap.get(key).action(mainTag, scanner);
             } else {

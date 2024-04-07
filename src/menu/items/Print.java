@@ -6,7 +6,12 @@ import java.util.Scanner;
 
 public class Print implements Action {
     @Override
-    public void action(MainTag mainTag, Scanner scanner){
-        System.out.println(mainTag.toString());
+    public void action(MainTag mainTag, String[] data){
+        if(data.length==1) {
+            System.out.println(mainTag.toString()+'\n');
+        }
+        else{
+            System.out.println("Невалидни данни за команда "+data[0]+"\n");
+        }
     }
 }

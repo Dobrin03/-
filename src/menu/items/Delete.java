@@ -7,14 +7,16 @@ import java.util.Scanner;
 
 public class Delete implements Action {
     @Override
-    public void action(MainTag mainTag, Scanner scanner){
-        GetDelete getDelete=new GetDelete();
-        System.out.println("Въведете ID на елемента: ");
-        String id=scanner.nextLine();
+    public void action(MainTag mainTag, String[] data){
+        if(data.length==3) {
+            GetDelete getDelete=new GetDelete();
+            String id=data[1];
+            String key=data[2];
 
-        System.out.println("Въведете ключ на атрибута: ");
-        String key=scanner.nextLine();
-
-        getDelete.action(mainTag, id, key);
+            getDelete.action(mainTag, id, key);
+        }
+        else{
+            System.out.println("Невалидни данни за команда "+data[0]+"\n");
+        }
     }
 }

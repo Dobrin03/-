@@ -6,8 +6,8 @@ import main_class.MainTag;
 
 public class GetSet {
     public void action(MainTag mainTag, String id, String key, String value){
-        SearchHeader search=new SearchHeader();
-        Header selectedHeader=search.searchById(mainTag, id);
+        Search search=new Search();
+        Header selectedHeader=search.searchHeaderById(mainTag, id);
         Content selectedContent=null;
 
         if(selectedHeader!=null) {

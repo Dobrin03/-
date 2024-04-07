@@ -7,8 +7,8 @@ import main_class.MainTag;
 public class GetChildren {
     public Content action(MainTag mainTag, String id){
         Content content=null;
-        SearchHeader search=new SearchHeader();
-        Header selectedHeader=search.searchById(mainTag, id);
+        Search search=new Search();
+        Header selectedHeader=search.searchHeaderById(mainTag, id);
 
         if(selectedHeader!=null){
             content=mainTag.mainTag.get(selectedHeader);

@@ -6,5 +6,5 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public interface Action {
-    void action(MainTag mainTag, Scanner scanner) throws IOException;
+    void action(MainTag mainTag, String[] data) throws IOException;
 }

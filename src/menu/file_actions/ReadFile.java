@@ -1,4 +1,4 @@
-package files;
+package menu.file_actions;
 
 import main_class.Content;
 import main_class.Header;
@@ -13,18 +13,16 @@ import java.util.Scanner;
 public class ReadFile {
     private Scanner fileReader;
     private String fileName;
-    private String path;
     public File file;
 
-    public ReadFile(String fileName, String path) throws IOException {
+    public ReadFile(String fileName) throws IOException {
         this.fileName=fileName;
-        this.path=path;
-        file=new File(path+"/"+fileName+".xml");
+        file=new File(fileName+".xml");
         if(file.exists()) {
             fileReader = new Scanner(file);
         }
         else {
-            System.out.println("Този xml файл не съществува");
+            System.out.println("Този xml файл не съществува"+'\n');
         }
     }
 
@@ -42,31 +40,25 @@ public class ReadFile {
 
         while (fileReader.hasNextLine()){
             data=fileReader.nextLine();
-            if(data.contains("<") && data.contains(">") && mainTagName==null){
+            if(data.contains("<") && mainTagName==null){
                 mainTagName=data.substring(data.indexOf("<")+1, data.indexOf(">"));
                 mainTag.setName(mainTagName);
-            }
-
-            if(data.contains("id=")){
+            }else if(data.contains("id=")){
                 headerName=data.substring(data.indexOf("<")+1, data.indexOf(" "));
-                if(data.indexOf("=")+2!=data.indexOf(">")-1) {
-                    headerId = data.substring(data.indexOf("=") + 2, data.indexOf(">") - 1);
+                if(data.indexOf("'")+1!=data.lastIndexOf("'")) {
+                    headerId = data.substring(data.indexOf("'") + 1, data.lastIndexOf("'"));
                 }
                 else{
                     headerId=null;
                 }
 
                 header=new Header(headerName, headerId);
-            }
-
-            if(data.contains("\t\t")){
-                contentTagName=data.substring(data.indexOf("<")+1, data.indexOf(">"));
-                contentData=data.substring(data.indexOf(" ")+1, data.indexOf("</")-1);
+            }else if(data.contains("\t\t")){
+                contentTagName=data.substring(data.indexOf("/")+1, data.lastIndexOf(">"));
+                contentData=data.substring(data.indexOf(" ")+1, data.lastIndexOf(" "));
 
                 content.addInfo(contentTagName, contentData);
-            }
-
-            if(data.contains("</"+headerName+">")){
+            }else if(data.contains("</"+headerName+">")){
                 mainTag.addContent(header, content);
                 content=new Content();
             }

@@ -7,17 +7,17 @@ import java.util.Scanner;
 
 public class Set implements Action {
     @Override
-    public void action(MainTag mainTag, Scanner scanner){
-        GetSet getSet=new GetSet();
-        System.out.println("Въведете ID на елемента: ");
-        String id=scanner.nextLine();
+    public void action(MainTag mainTag, String[] data){
+        if(data.length==4) {
+            GetSet getSet=new GetSet();
+            String id=data[1];
+            String key=data[2];
+            String value=data[3];
 
-        System.out.println("Въведете ключ на атрибута: ");
-        String key=scanner.nextLine();
-
-        System.out.println("Въведете стойност на атрибута: ");
-        String value=scanner.nextLine();
-
-        getSet.action(mainTag, id, key, value);
+            getSet.action(mainTag, id, key, value);
+        }
+        else{
+            System.out.println("Невалидни данни за команда "+data[0]+"\n");
+        }
     }
 }

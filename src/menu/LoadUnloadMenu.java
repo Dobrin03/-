@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class LoadUnloadMenu {
-    private MainTag mainTag=null;
     public Map<String, MainTagState> mainTagState=new HashMap<>();
     private MainTagState open=new Open();
     private MainTagState close=new Close();
@@ -21,12 +20,8 @@ public class LoadUnloadMenu {
         mainTagState.put("close", close);
     }
 
-    public MainTag executeAction(String key, Scanner scanner) throws IOException {
-        if (mainTagState.containsKey(key)) {
-            mainTag=mainTagState.get(key).changeState(scanner);
-        }else {
-            System.out.println("Не съществува такава команда. Напишете 'help' за да разгледате достъпните команди");
-        }
+    public MainTag executeAction(MainTag mainTag, String[] key) throws IOException {
+        mainTag=mainTagState.get(key[0]).changeState(mainTag, key);
         return mainTag;
     }
 }

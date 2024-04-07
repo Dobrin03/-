@@ -7,11 +7,16 @@ import java.util.Scanner;
 
 public class Children implements Action {
     @Override
-    public void action(MainTag mainTag, Scanner scanner){
-        GetChildren getChildren=new GetChildren();
-        System.out.println("Въведете ID на елемента: ");
-        String id=scanner.nextLine();
+    public void action(MainTag mainTag, String[] data){
+        if(data.length==2) {
+            GetChildren getChildren=new GetChildren();
+            String id=data[1];
 
-        System.out.println(getChildren.action(mainTag, id).toString());
+
+            System.out.println(getChildren.action(mainTag, id).toString()+'\n');
+        }
+        else{
+            System.out.println("Невалидни данни за команда "+data[0]+"\n");
+        }
     }
 }

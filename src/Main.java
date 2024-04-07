@@ -1,4 +1,3 @@
-import files.ReadFile;
 import main_class.MainTag;
 import menu.LoadUnloadMenu;
 import menu.MenuMap;
@@ -15,17 +14,28 @@ public class Main {
         MainTag mainTag = null;
         Scanner scanner=new Scanner(System.in);
         String command;
+        String[] split;
         boolean test=true;
 
         do{
             System.out.println("Insert a command");
 
             command=scanner.nextLine();
-            if(loadUnloadMenu.mainTagState.containsKey(command)){
-                mainTag=loadUnloadMenu.executeAction(command, scanner);
+            if(command.contains("open") || command.contains("saveas")){
+                split=command.split(" ", 2);
             }
             else {
-                menuMap.executeAction(mainTag, command, scanner);
+                split = command.split(" ");
+            }
+
+            if(loadUnloadMenu.mainTagState.containsKey(split[0])){
+                mainTag=loadUnloadMenu.executeAction(mainTag, split);
+            }
+            else if(menuMap.menuMap.containsKey(split[0])){
+                menuMap.executeAction(mainTag, split);
+            }
+            else{
+                System.out.println("Не съществува такава команда. Напишете 'help' за да разгледате достъпните команди"+'\n');
             }
         }while (command.compareToIgnoreCase("exit")!=0);
         scanner.close();

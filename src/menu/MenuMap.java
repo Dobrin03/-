@@ -11,8 +11,9 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class MenuMap {
-    private Map<String, Action> menuMap = new HashMap<>();
+    public Map<String, Action> menuMap = new HashMap<>();
     private Action saveAs=new SaveAs();
+    private Action help=new Help();
     private Action print=new Print();
     private Action select=new Select();
     private Action set=new Set();
@@ -21,10 +22,12 @@ public class MenuMap {
     private Action text=new Text();
     private Action delete=new Delete();
     private Action newChild=new NewChild();
+    private Action xpath=new XPath();
     private Action exit=new Exit();
 
     public MenuMap(){
         menuMap.put("saveas", saveAs);
+        menuMap.put("help", help);
         menuMap.put("print", print);
         menuMap.put("select", select);
         menuMap.put("set", set);
@@ -33,19 +36,16 @@ public class MenuMap {
         menuMap.put("text", text);
         menuMap.put("delete", delete);
         menuMap.put("newchild", newChild);
+        menuMap.put("xpath", xpath);
         menuMap.put("exit", exit);
     }
 
-    public void executeAction(MainTag mainTag, String key, Scanner scanner) throws IOException {
-        if (menuMap.containsKey(key)) {
-            if (mainTag!= null || key.compareToIgnoreCase("exit")==0
-                    || key.compareToIgnoreCase("open")==0) {
-                menuMap.get(key).action(mainTag, scanner);
-            } else {
-                System.out.println("Не може да се изшълни тази команда на празен файл");
-            }
-        }else {
-            System.out.println("Не съществува такава команда. Напишете 'help' за да разгледате достъпните команди");
+    public void executeAction(MainTag mainTag, String[] key) throws IOException {
+        if (mainTag!= null || key[0].compareToIgnoreCase("help")==0
+                || key[0].compareToIgnoreCase("exit")==0){
+            menuMap.get(key[0]).action(mainTag, key);
+        } else {
+            System.out.println("Не може да се изшълни тази команда на празен файл");
         }
     }
 }

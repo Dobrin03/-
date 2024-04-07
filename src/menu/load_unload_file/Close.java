@@ -8,7 +8,13 @@ import java.util.Scanner;
 
 public class Close implements MainTagState {
     @Override
-    public MainTag changeState(Scanner scanner) {
-        return null;
+    public MainTag changeState(MainTag mainTag, String[] data) {
+        if(data.length==1) {
+            return null;
+        }
+        else{
+            System.out.println("Невалидни данни за команда "+data[0]+"\n");
+        }
+        return mainTag;
     }
 }

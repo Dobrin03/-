@@ -6,5 +6,5 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public interface MainTagState {
-    MainTag changeState(Scanner scanner) throws IOException;
+    MainTag changeState(MainTag mainTag, String[] data) throws IOException;
 }

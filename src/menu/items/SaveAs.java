@@ -8,13 +8,16 @@ import java.nio.file.Files;
 
 public class SaveAs implements Action {
     @Override
-    public void action(MainTag mainTag, String[] data) throws IOException {
+    public void action(MainTag mainTag, String[] data, String file) throws IOException {
         if (data.length == 2) {
             String name = data[1];
 
             WriteFile write = new WriteFile(name);
             if (Files.exists(write.pathName)) {
                 write.action(mainTag.toString());
+            }
+            else {
+                System.out.println("Тази пътека не съществува");
             }
         }
         else{

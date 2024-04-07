@@ -16,6 +16,9 @@ public class Open implements MainTagState {
                 mainTag = read.action();
                 System.out.println("Файлът е прочетен успешно"+'\n');
             }
+            else{
+                System.out.println("Този xml файл не съществува"+'\n');
+            }
             return mainTag;
         }
         else{

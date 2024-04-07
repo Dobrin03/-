@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Exit implements Action {
     @Override
-    public void action(MainTag mainTag, String[] data) throws IOException {
+    public void action(MainTag mainTag, String[] data, String file) throws IOException {
         if(data.length==1) {
             System.out.println("Goodbye");
         }

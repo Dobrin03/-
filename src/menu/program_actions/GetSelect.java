@@ -10,7 +10,7 @@ public class GetSelect {
         Header selectedHeader=search.searchHeaderById(mainTag, id);
         Content selectedContent=null;
 
-        if(selectedHeader!=null) {
+        if(selectedHeader!=null && mainTag.mainTag.get(selectedHeader).attributes.containsKey(key)) {
            selectedContent = mainTag.mainTag.get(selectedHeader);
         }
 

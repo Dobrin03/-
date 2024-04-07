@@ -17,9 +17,6 @@ public class WriteFile extends FileCreate {
         if(Files.exists(pathName)) {
             fileWriter = new FileWriter(file);
         }
-        else {
-            System.out.println("Тази пътека не съществува");
-        }
     }
 
     @Override
@@ -29,9 +26,9 @@ public class WriteFile extends FileCreate {
 
         if(Files.exists(pathName)) {
             if (file.createNewFile()) {
-                System.out.println("Файлът е създаден успешно");
+                System.out.println("Файлът е създаден успешно\n");
             } else {
-                System.out.println("Файлът вече съществува. Данните са заместени успешно");
+                System.out.println("Файлът вече съществува. Данните са заместени успешно\n");
             }
         }
     }

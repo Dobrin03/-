@@ -10,12 +10,17 @@ public class GetDelete {
         Header selectedHeader=search.searchHeaderById(mainTag, id);
         Content selectedContent=null;
 
-        if(selectedHeader!=null){
+        if(selectedHeader!=null && mainTag.mainTag.get(selectedHeader).attributes.containsKey(key)){
             selectedContent=mainTag.mainTag.get(selectedHeader);
         }
 
+
         if(selectedContent!=null){
             selectedContent.attributes.remove(key);
+            System.out.println("Премахването е успешно\n");
+        }
+        else {
+            System.out.println("Не е открит желания атрибут\n");
         }
     }
 }

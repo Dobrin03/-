@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Set implements Action {
     @Override
-    public void action(MainTag mainTag, String[] data){
+    public void action(MainTag mainTag, String[] data, String file){
         if(data.length==4) {
             GetSet getSet=new GetSet();
             String id=data[1];

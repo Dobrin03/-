@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 public class MenuMap {
     public Map<String, Action> menuMap = new HashMap<>();
+    private Action save=new Save();
     private Action saveAs=new SaveAs();
     private Action help=new Help();
     private Action print=new Print();
@@ -26,6 +27,7 @@ public class MenuMap {
     private Action exit=new Exit();
 
     public MenuMap(){
+        menuMap.put("save", save);
         menuMap.put("saveas", saveAs);
         menuMap.put("help", help);
         menuMap.put("print", print);
@@ -40,12 +42,11 @@ public class MenuMap {
         menuMap.put("exit", exit);
     }
 
-    public void executeAction(MainTag mainTag, String[] key) throws IOException {
-        if (mainTag!= null || key[0].compareToIgnoreCase("help")==0
-                || key[0].compareToIgnoreCase("exit")==0){
-            menuMap.get(key[0]).action(mainTag, key);
+    public void executeAction(MainTag mainTag, String[] key, String file) throws IOException {
+        if (mainTag!= null || key[0].contains("help") || key[0].contains("exit")){
+            menuMap.get(key[0]).action(mainTag, key, file);
         } else {
-            System.out.println("Не може да се изшълни тази команда на празен файл");
+            System.out.println("Не може да се изшълни тази команда на празен файл\n");
         }
     }
 }

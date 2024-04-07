@@ -21,9 +21,6 @@ public class ReadFile {
         if(file.exists()) {
             fileReader = new Scanner(file);
         }
-        else {
-            System.out.println("Този xml файл не съществува"+'\n');
-        }
     }
 
     public MainTag action(){
@@ -34,9 +31,10 @@ public class ReadFile {
         String data;
         String mainTagName = null;
         String headerName=null;
-        String headerId=null;
-        String contentTagName=null;
-        String contentData=null;
+        String headerId;
+        String contentTagName;
+        String contentData;
+        boolean hasContent=false;
 
         while (fileReader.hasNextLine()){
             data=fileReader.nextLine();
@@ -54,13 +52,24 @@ public class ReadFile {
 
                 header=new Header(headerName, headerId);
             }else if(data.contains("\t\t")){
+                hasContent=true;
                 contentTagName=data.substring(data.indexOf("/")+1, data.lastIndexOf(">"));
-                contentData=data.substring(data.indexOf(" ")+1, data.lastIndexOf(" "));
+                if(data.indexOf(">")+1 != data.lastIndexOf("<")) {
+                    contentData = data.substring(data.indexOf(">") + 1, data.lastIndexOf("<"));
+                }
+                else{
+                    contentData=null;
+                }
 
                 content.addInfo(contentTagName, contentData);
             }else if(data.contains("</"+headerName+">")){
+                if(!hasContent){
+                    content=null;
+                }
+
                 mainTag.addContent(header, content);
                 content=new Content();
+                hasContent=false;
             }
         }
 

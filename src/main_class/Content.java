@@ -18,8 +18,8 @@ public class Content {
     public String toString(){
         StringBuilder builder=new StringBuilder();
         for(Map.Entry<String, String> attribute: attributes.entrySet()) {
-            builder.append("\t\t<").append(attribute.getKey()).append("> ").append(attribute.getValue())
-                    .append(" </").append(attribute.getKey()).append(">\n");
+            builder.append("\t\t<").append(attribute.getKey()).append(">").append(attribute.getValue())
+                    .append("</").append(attribute.getKey()).append(">\n");
         }
         return builder.toString();
     }

@@ -15,14 +15,15 @@ public class Main {
         Scanner scanner=new Scanner(System.in);
         String command;
         String[] split;
-        boolean test=true;
+        String fileName = null;
 
         do{
             System.out.println("Insert a command");
 
             command=scanner.nextLine();
-            if(command.contains("open") || command.contains("saveas")){
+            if((command.contains("open") || command.contains("saveas")) && command.contains(" ")){
                 split=command.split(" ", 2);
+                fileName=split[1];
             }
             else {
                 split = command.split(" ");
@@ -32,7 +33,7 @@ public class Main {
                 mainTag=loadUnloadMenu.executeAction(mainTag, split);
             }
             else if(menuMap.menuMap.containsKey(split[0])){
-                menuMap.executeAction(mainTag, split);
+                menuMap.executeAction(mainTag, split, fileName);
             }
             else{
                 System.out.println("Не съществува такава команда. Напишете 'help' за да разгледате достъпните команди"+'\n');

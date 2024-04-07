@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Print implements Action {
     @Override
-    public void action(MainTag mainTag, String[] data){
+    public void action(MainTag mainTag, String[] data, String file){
         if(data.length==1) {
             System.out.println(mainTag.toString()+'\n');
         }

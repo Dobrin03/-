@@ -16,6 +16,10 @@ public class GetSet {
 
         if(selectedContent!=null){
             selectedContent.attributes.put(key, value);
+            System.out.println("Успешно присвояване на стойност\n");
+        }
+        else {
+            System.out.println("Не е открит желания атрибут\n");
         }
     }
 }

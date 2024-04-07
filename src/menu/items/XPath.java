@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class XPath implements Action{
     @Override
-    public void action(MainTag mainTag, String[] data) throws IOException {
+    public void action(MainTag mainTag, String[] data, String file) throws IOException {
         if(data.length==2){
             String command=data[1];
 

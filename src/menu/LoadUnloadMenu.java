@@ -21,7 +21,12 @@ public class LoadUnloadMenu {
     }
 
     public MainTag executeAction(MainTag mainTag, String[] key) throws IOException {
-        mainTag=mainTagState.get(key[0]).changeState(mainTag, key);
+        if(!key[0].contains("close")) {
+            mainTag = mainTagState.get(key[0]).changeState(mainTag, key);
+        }
+        else{
+            System.out.println("Не може да се изшълни тази команда на празен файл\n");
+        }
         return mainTag;
     }
 }

@@ -34,8 +34,10 @@ public class Search {
         StringBuilder builder=new StringBuilder();
         Header header=searchHeaderById(mainTag, id);
 
-        if(header!=null && header.name.equals(name) && mainTag.mainTag.get(header).attributes.containsKey(attribute)){
-            builder.append(mainTag.mainTag.get(header).attributes.get(attribute));
+        if(mainTag.mainTag.get(header)!=null) {
+            if (header != null && header.name.equals(name) && mainTag.mainTag.get(header).attributes.containsKey(attribute)) {
+                builder.append(mainTag.mainTag.get(header).attributes.get(attribute));
+            }
         }
 
         return builder.toString();
@@ -46,8 +48,10 @@ public class Search {
         List<Header> headers=searchHeaderByName(mainTag, name);
 
         for (Header header: headers) {
-            if(mainTag.mainTag.get(header).attributes.containsKey(attribute)) {
-                builder.append(mainTag.mainTag.get(header).attributes.get(attribute)).append('\n');
+            if(mainTag.mainTag.get(header)!=null) {
+                if (mainTag.mainTag.get(header).attributes.containsKey(attribute)) {
+                    builder.append(mainTag.mainTag.get(header).attributes.get(attribute)).append('\n');
+                }
             }
         }
 
@@ -70,10 +74,12 @@ public class Search {
         List<Header> headers=searchHeaderByName(mainTag, name);
 
         for (Header header: headers) {
-            if(mainTag.mainTag.get(header).attributes.containsKey(search)
-                    && mainTag.mainTag.get(header).attributes.containsKey(find)){
-                if(mainTag.mainTag.get(header).attributes.get(search).equals(value)){
-                    builder.append(mainTag.mainTag.get(header).attributes.get(find)).append('\n');
+            if(mainTag.mainTag.get(header)!=null) {
+                if (mainTag.mainTag.get(header).attributes.containsKey(search)
+                        && mainTag.mainTag.get(header).attributes.containsKey(find)) {
+                    if (mainTag.mainTag.get(header).attributes.get(search).equals(value)) {
+                        builder.append(mainTag.mainTag.get(header).attributes.get(find)).append('\n');
+                    }
                 }
             }
         }

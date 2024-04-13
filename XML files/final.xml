@@ -1,0 +1,20 @@
+<people>
+	<person id='3_2'>
+	</person>
+	<person id='1_2'>
+		<name>Иван</name>
+	</person>
+	<person name='' id='1_1'>
+		<name>Ния</name>
+		<family>Николаева</family>
+	</person>
+	<person id='2'>
+		<name>Георги</name>
+		<family>Николаева</family>
+	</person>
+	<person name='test' id='3_1'>
+	</person>
+	<person id='1'>
+		<family>Георгиев</family>
+	</person>
+</people>

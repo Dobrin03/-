@@ -9,14 +9,18 @@ import java.nio.file.Paths;
 
 public class WriteFile extends FileCreate {
     private FileWriter fileWriter;
-    public Path pathName;
+    private Path pathName;
 
     public WriteFile(String fileName) throws IOException {
         super(fileName);
         checkFile(fileName);
         if(Files.exists(pathName)) {
-            fileWriter = new FileWriter(file);
+            fileWriter = new FileWriter(getFile());
         }
+    }
+
+    public Path getPathName(){
+        return pathName;
     }
 
     @Override
@@ -25,7 +29,7 @@ public class WriteFile extends FileCreate {
         pathName=Paths.get(path);
 
         if(Files.exists(pathName)) {
-            if (file.createNewFile()) {
+            if (getFile().createNewFile()) {
                 System.out.println("Файлът е създаден успешно\n");
             } else {
                 System.out.println("Файлът вече съществува. Данните са заместени успешно\n");

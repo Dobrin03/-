@@ -10,8 +10,8 @@ public class GetChildren {
         Search search=new Search();
         Header selectedHeader=search.searchHeaderById(mainTag, id);
 
-        if(selectedHeader!=null && mainTag.mainTag.get(selectedHeader)!=null){
-            content=mainTag.mainTag.get(selectedHeader);
+        if(selectedHeader!=null && mainTag.getMainTag().get(selectedHeader)!=null){
+            content=mainTag.getMainTag().get(selectedHeader);
         }
 
         return content;

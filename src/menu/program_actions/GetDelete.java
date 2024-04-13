@@ -10,13 +10,13 @@ public class GetDelete {
         Header selectedHeader=search.searchHeaderById(mainTag, id);
         Content selectedContent=null;
 
-        if(selectedHeader!=null && mainTag.mainTag.get(selectedHeader).attributes.containsKey(key)){
-            selectedContent=mainTag.mainTag.get(selectedHeader);
+        if(selectedHeader!=null && mainTag.getMainTag().get(selectedHeader).getAttributes().containsKey(key)){
+            selectedContent=mainTag.getMainTag().get(selectedHeader);
         }
 
 
         if(selectedContent!=null){
-            selectedContent.attributes.remove(key);
+            selectedContent.getAttributes().remove(key);
             System.out.println("Премахването е успешно\n");
         }
         else {

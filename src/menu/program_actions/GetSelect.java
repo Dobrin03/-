@@ -10,14 +10,14 @@ public class GetSelect {
         Header selectedHeader=search.searchHeaderById(mainTag, id);
         Content selectedContent=null;
 
-        if(selectedHeader!=null && mainTag.mainTag.get(selectedHeader).attributes.containsKey(key)) {
-           selectedContent = mainTag.mainTag.get(selectedHeader);
+        if(selectedHeader!=null && mainTag.getMainTag().get(selectedHeader).getAttributes().containsKey(key)) {
+           selectedContent = mainTag.getMainTag().get(selectedHeader);
         }
 
         if(selectedContent!=null) {
-            for (String k : selectedContent.attributes.keySet()) {
+            for (String k : selectedContent.getAttributes().keySet()) {
                 if (k.equals(key)) {
-                    return selectedContent.attributes.get(k);
+                    return selectedContent.getAttributes().get(k);
                 }
             }
         }

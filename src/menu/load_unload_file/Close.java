@@ -10,6 +10,7 @@ public class Close implements MainTagState {
     @Override
     public MainTag changeState(MainTag mainTag, String[] data) {
         if(data.length==1) {
+            System.out.println("Изпразване на данните\n");
             return null;
         }
         else{

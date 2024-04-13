@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class ReadFile {
     private Scanner fileReader;
     private String fileName;
-    public File file;
+    private File file;
 
     public ReadFile(String fileName) throws IOException {
         this.fileName=fileName;
@@ -23,15 +23,22 @@ public class ReadFile {
         }
     }
 
+    public File getFile(){
+        return file;
+    }
+
     public MainTag action(){
         MainTag mainTag=new MainTag(null);
         Header header = null;
         Content content = new Content();
 
         String data;
+        String tabs="\t\t";
         String mainTagName = null;
         String headerName=null;
-        String headerId;
+        String headerKey=null;
+        String headerValue=null;
+        int newIndex, oldIndex=0;
         String contentTagName;
         String contentData;
         boolean hasContent=false;
@@ -41,17 +48,30 @@ public class ReadFile {
             if(data.contains("<") && mainTagName==null){
                 mainTagName=data.substring(data.indexOf("<")+1, data.indexOf(">"));
                 mainTag.setName(mainTagName);
-            }else if(data.contains("id=")){
+            }else if(data.contains("\t") && !data.contains(tabs) && !data.contains("/")){
                 headerName=data.substring(data.indexOf("<")+1, data.indexOf(" "));
-                if(data.indexOf("'")+1!=data.lastIndexOf("'")) {
-                    headerId = data.substring(data.indexOf("'") + 1, data.lastIndexOf("'"));
-                }
-                else{
-                    headerId=null;
-                }
+                header=new Header(headerName);
 
-                header=new Header(headerName, headerId);
-            }else if(data.contains("\t\t")){
+                newIndex=data.indexOf('=');
+                while(newIndex>=0){
+                    if(headerKey==null){
+                        headerKey=data.substring(data.indexOf(" ")+1, newIndex);
+                    }else {
+                        headerKey = data.substring(data.indexOf(' ', oldIndex)+1,
+                                newIndex);
+                    }
+                    if(newIndex+2 !=data.indexOf("'", newIndex+2)){
+                        headerValue=data.substring(newIndex+2, data.indexOf("'", newIndex+2));
+                    }
+                    else{
+                        headerValue=null;
+                    }
+
+                    header.addExtension(headerKey, headerValue);
+                    oldIndex=newIndex;
+                    newIndex=data.indexOf("=", data.indexOf(headerKey)+headerKey.length()+2);
+                }
+            }else if(data.contains(tabs)){
                 hasContent=true;
                 contentTagName=data.substring(data.indexOf("/")+1, data.lastIndexOf(">"));
                 if(data.indexOf(">")+1 != data.lastIndexOf("<")) {
@@ -70,6 +90,7 @@ public class ReadFile {
                 mainTag.addContent(header, content);
                 content=new Content();
                 hasContent=false;
+                headerKey=null;
             }
         }
 

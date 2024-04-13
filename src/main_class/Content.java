@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Content {
-    public Map<String, String> attributes;
+    private Map<String, String> attributes;
 
     public Content(){
         attributes=new HashMap<>();
@@ -12,6 +12,10 @@ public class Content {
 
     public void addInfo(String key, String value){
         attributes.put(key, value);
+    }
+
+    public Map<String, String> getAttributes(){
+        return attributes;
     }
 
     @Override

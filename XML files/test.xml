@@ -1,22 +1,21 @@
 <people>
-	<person id='4'>
-	</person>
-	<person id='1_1'>
-		<name>Иван</name>
-		<family>Георгиев</family>
-	</person>
-	<person id='1_2'>
-		<name>Иван</name>
-		<family>Георгиев</family>
+	<person name=''>
+		<name>Ния</name>
+		<family>Николаева</family>
 	</person>
 	<person id='1'>
-		<name>Ния</name>
-		<family>Николаева</family>
+		<name>Иван</name>
 	</person>
-	<person id='2'>
-		<name>Ния</name>
-		<family>Николаева</family>
+	<person id='' name='test'>
 	</person>
 	<person id='3'>
+	</person>
+	<person id='1'>
+		<name>Иван</name>
+		<family>Георгиев</family>
+	</person>
+	<person id='2'>
+		<name>Георги</name>
+		<family>Николаева</family>
 	</person>
 </people>

@@ -5,7 +5,8 @@ import main_class.MainTag;
 
 public class GetNewChild {
     public void action(MainTag mainTag, String name, String id){
-        Header header=new Header(name, id);
+        Header header=new Header(name);
+        header.addExtension("id", id);
         mainTag.addContent(header, null);
         System.out.println("Добавянето е успешно\n");
     }

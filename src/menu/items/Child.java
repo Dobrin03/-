@@ -13,7 +13,7 @@ public class Child implements Action {
             String id=data[1];
             int n=Integer.parseInt(data[2]);
 
-            if(!getChild.action(mainTag, id, n).isEmpty()) {
+            if(getChild.action(mainTag, id, n)!=null) {
                 System.out.println(getChild.action(mainTag, id, n) + '\n');
             }
             else{

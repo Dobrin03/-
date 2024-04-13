@@ -7,13 +7,15 @@ public class GetChild {
     public String action(MainTag mainTag, String id, int n){
         int i=1;
         GetChildren children=new GetChildren();
-        Content content=children.action(mainTag, id);
+        if(children.action(mainTag, id)!=null) {
+            Content content = children.action(mainTag, id);
 
-        for(String string: content.attributes.keySet()){
-            if(i==n){
-                return string;
+            for (String string : content.getAttributes().keySet()) {
+                if (i == n) {
+                    return string;
+                }
+                ++i;
             }
-            ++i;
         }
 
         return null;

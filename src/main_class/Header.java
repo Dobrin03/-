@@ -1,30 +1,46 @@
 package main_class;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Header {
-    public String name;
-    public String id;
+    private String name;
+    private Map<String, String> extension;
 
-    public Header(String name, String id){
+    public Header(String name){
         this.name=name;
-        this.id=id;
+        extension=new HashMap<>();
     }
 
-    protected void setId(String id){
-        this.id=id;
+    public void addExtension(String key, String value){
+        if(value==null){
+            extension.put(key, "");
+        }else {
+            extension.put(key, value);
+        }
+    }
+
+    protected void changeID(String r){
+        extension.replace("id", r);
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public Map<String, String> getExtension(){
+        return extension;
     }
 
     @Override
     public String toString(){
-        return (name+" id='"+id+"'");
-    }
+        StringBuilder builder=new StringBuilder();
+        builder.append(name);
+        for(Map.Entry<String, String> map : extension.entrySet()){
+            builder.append(" ").append(map.getKey()).append("='").append(map.getValue()).append("'");
+        }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Header header = (Header) o;
-        return Objects.equals(name, header.name) && Objects.equals(id, header.id);
+        return builder.toString();
     }
 }

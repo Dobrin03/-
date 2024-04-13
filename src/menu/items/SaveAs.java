@@ -13,11 +13,11 @@ public class SaveAs implements Action {
             String name = data[1];
 
             WriteFile write = new WriteFile(name);
-            if (Files.exists(write.pathName)) {
+            if (Files.exists(write.getPathName())) {
                 write.action(mainTag.toString());
             }
             else {
-                System.out.println("Тази пътека не съществува");
+                System.out.println("Тази пътека не съществува\n");
             }
         }
         else{

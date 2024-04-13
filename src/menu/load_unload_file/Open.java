@@ -12,7 +12,7 @@ public class Open implements MainTagState {
             String name = data[1];
 
             ReadFile read = new ReadFile(name);
-            if (read.file.exists()) {
+            if (read.getFile().exists()) {
                 mainTag = read.action();
                 System.out.println("Файлът е прочетен успешно"+'\n');
             }

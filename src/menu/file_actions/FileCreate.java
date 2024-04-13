@@ -7,10 +7,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public abstract class FileCreate {
-    public File file;
+    private File file;
 
     protected FileCreate(String fileName){
         file=new File(fileName+".xml");
+    }
+
+    public File getFile(){
+        return file;
     }
 
     protected abstract void checkFile(String fileName) throws IOException;

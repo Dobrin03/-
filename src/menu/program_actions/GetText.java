@@ -10,7 +10,7 @@ public class GetText {
         StringBuilder builder=new StringBuilder();
 
         if(selectedContent!=null){
-            for(String s: selectedContent.attributes.values()){
+            for(String s: selectedContent.getAttributes().values()){
                 builder.append(s).append(' ');
             }
             return builder.toString();

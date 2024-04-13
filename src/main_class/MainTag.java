@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class MainTag {
-    public String name;
-    public Map<Header, Content> mainTag;
+    private String name;
+    private Map<Header, Content> mainTag;
 
     public MainTag(String name){
         mainTag=new HashMap<>();
@@ -19,36 +19,47 @@ public class MainTag {
     }
 
     public void addContent(Header key, Content value){
-        checkForRepeatId(key, key.id, 1);
+        checkForRepeatId(key, key.getExtension().get("id"), 1);
         mainTag.put(key, value);
     }
 
-    private void checkForRepeatId(Header key, String id, int i){
+    public Map<Header, Content> getMainTag(){
+        return mainTag;
+    }
+
+    private void checkForRepeatId(Header key, String value, int i){
+        if(!key.getExtension().containsKey("id")){
+            key.getExtension().put("id", String.valueOf(i));
+            checkForRepeatId(key, key.getExtension().get("id"), i);
+        }
+        else {
         if(!mainTag.isEmpty()) {
-            if(key.id==null){
+            if(value.isEmpty()){
                 for(Header header: mainTag.keySet()){
                     ++i;
                 }
-                key.setId(String.valueOf(i));
+                key.changeID(String.valueOf(i));
             }
             else {
-                List<Header> headers = mainTag.keySet().stream().filter(h -> h.id.equals(key.id)).collect(Collectors.toList());
+                List<Header> headers = mainTag.keySet().stream().filter(h -> h.getExtension().get("id").equals(value))
+                        .collect(Collectors.toList());
 
                 if (mainTag.containsKey(key)) {
                     headers.remove(key);
                 }
 
                 for (Header header : headers) {
-                    header.setId(id + "_" + i);
+                    header.changeID(value + "_" + i);
                     ++i;
-                    checkForRepeatId(header, id, i);
-                    key.setId(id + "_" + i);
-                    checkForRepeatId(key, id, i);
+                    checkForRepeatId(header, value, i);
+                    key.changeID(value + "_" + i);
+                    checkForRepeatId(key, value, i);
                 }
             }
         }
-        else if(key.id==null){
-            key.setId(String.valueOf(i));
+        else if(value.isEmpty()){
+            key.changeID(String.valueOf(i));
+        }
         }
     }
 
@@ -61,7 +72,7 @@ public class MainTag {
             if(tag.getValue()!=null) {
                     builder.append(tag.getValue().toString());
             }
-                    builder.append("\t</").append(tag.getKey().name).append(">\n");
+                    builder.append("\t</").append(tag.getKey().getName()).append(">\n");
         }
         builder.append("</").append(name).append(">");
         return builder.toString();

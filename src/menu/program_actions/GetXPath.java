@@ -14,6 +14,7 @@ public class GetXPath {
         String tagName;
         String id;
         String attribute;
+        String extension;
 
         if (command.contains("/") && !command.contains("=")) {
             data = command.substring(command.indexOf('/')+1);
@@ -34,11 +35,12 @@ public class GetXPath {
                             .append(search.searchForAttributeList(mainTag, tagName, data));
                 }
             }
-        }else if (command.contains("(@id)")) {
+        }else if (command.contains("@")) {
             tagName = command.substring(0, command.indexOf('('));
-            if(!search.searchForIdList(mainTag, tagName).isEmpty()) {
+            extension=command.substring(command.indexOf('@')+1, command.indexOf(')'));
+            if(!search.searchForExtensionList(mainTag, tagName, extension).isEmpty()) {
                 builder.append("Списък с всички id за тага ").append(tagName)
-                        .append(":\n").append(search.searchForIdList(mainTag, tagName));
+                        .append(":\n").append(search.searchForExtensionList(mainTag, tagName, extension));
             }
         }else if (command.contains("=")) {
             data = command.substring(command.indexOf('(') + 1);

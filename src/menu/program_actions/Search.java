@@ -10,8 +10,8 @@ import java.util.Map;
 
 public class Search {
     public Header searchHeaderById(MainTag mainTag, String id){
-        for(Header header: mainTag.mainTag.keySet()){
-            if(header.id.equals(id)){
+        for(Header header: mainTag.getMainTag().keySet()){
+            if(header.getExtension().get("id").equals(id)){
                 return header;
             }
         }
@@ -21,8 +21,8 @@ public class Search {
 
     public List searchHeaderByName(MainTag mainTag, String name){
         List<Header> headers=new ArrayList<>();
-        for(Header header: mainTag.mainTag.keySet()){
-            if(header.name.equals(name)){
+        for(Header header: mainTag.getMainTag().keySet()){
+            if(header.getName().equals(name)){
                 headers.add(header);
             }
         }
@@ -34,9 +34,9 @@ public class Search {
         StringBuilder builder=new StringBuilder();
         Header header=searchHeaderById(mainTag, id);
 
-        if(mainTag.mainTag.get(header)!=null) {
-            if (header != null && header.name.equals(name) && mainTag.mainTag.get(header).attributes.containsKey(attribute)) {
-                builder.append(mainTag.mainTag.get(header).attributes.get(attribute));
+        if(mainTag.getMainTag().get(header)!=null) {
+            if (header != null && header.getName().equals(name) && mainTag.getMainTag().get(header).getAttributes().containsKey(attribute)) {
+                builder.append(mainTag.getMainTag().get(header).getAttributes().get(attribute));
             }
         }
 
@@ -48,9 +48,9 @@ public class Search {
         List<Header> headers=searchHeaderByName(mainTag, name);
 
         for (Header header: headers) {
-            if(mainTag.mainTag.get(header)!=null) {
-                if (mainTag.mainTag.get(header).attributes.containsKey(attribute)) {
-                    builder.append(mainTag.mainTag.get(header).attributes.get(attribute)).append('\n');
+            if(mainTag.getMainTag().get(header)!=null) {
+                if (mainTag.getMainTag().get(header).getAttributes().containsKey(attribute)) {
+                    builder.append(mainTag.getMainTag().get(header).getAttributes().get(attribute)).append('\n');
                 }
             }
         }
@@ -58,12 +58,14 @@ public class Search {
         return builder.toString();
     }
 
-    public String searchForIdList(MainTag mainTag, String name){
+    public String searchForExtensionList(MainTag mainTag, String name, String extension){
         StringBuilder builder=new StringBuilder();
         List<Header> headers=searchHeaderByName(mainTag, name);
 
         for (Header header: headers) {
-            builder.append(header.id).append('\n');
+            if(header.getExtension().containsKey(extension)) {
+                builder.append(header.getExtension().get(extension)).append('\n');
+            }
         }
 
         return builder.toString();
@@ -74,11 +76,11 @@ public class Search {
         List<Header> headers=searchHeaderByName(mainTag, name);
 
         for (Header header: headers) {
-            if(mainTag.mainTag.get(header)!=null) {
-                if (mainTag.mainTag.get(header).attributes.containsKey(search)
-                        && mainTag.mainTag.get(header).attributes.containsKey(find)) {
-                    if (mainTag.mainTag.get(header).attributes.get(search).equals(value)) {
-                        builder.append(mainTag.mainTag.get(header).attributes.get(find)).append('\n');
+            if(mainTag.getMainTag().get(header)!=null) {
+                if (mainTag.getMainTag().get(header).getAttributes().containsKey(search)
+                        && mainTag.getMainTag().get(header).getAttributes().containsKey(find)) {
+                    if (mainTag.getMainTag().get(header).getAttributes().get(search).equals(value)) {
+                        builder.append(mainTag.getMainTag().get(header).getAttributes().get(find)).append('\n');
                     }
                 }
             }

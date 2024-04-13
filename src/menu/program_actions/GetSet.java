@@ -11,11 +11,11 @@ public class GetSet {
         Content selectedContent=null;
 
         if(selectedHeader!=null) {
-            selectedContent = mainTag.mainTag.get(selectedHeader);
+            selectedContent = mainTag.getMainTag().get(selectedHeader);
         }
 
         if(selectedContent!=null){
-            selectedContent.attributes.put(key, value);
+            selectedContent.getAttributes().put(key, value);
             System.out.println("Успешно присвояване на стойност\n");
         }
         else {

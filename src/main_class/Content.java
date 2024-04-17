@@ -21,7 +21,7 @@ public class Content {
     @Override
     public String toString(){
         StringBuilder builder=new StringBuilder();
-        for(Map.Entry<String, String> attribute: attributes.entrySet()) {
+        for(Map.Entry<String, String> attribute: getAttributes().entrySet()) {
             builder.append("\t\t<").append(attribute.getKey()).append(">").append(attribute.getValue())
                     .append("</").append(attribute.getKey()).append(">\n");
         }

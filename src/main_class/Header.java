@@ -36,8 +36,8 @@ public class Header {
     @Override
     public String toString(){
         StringBuilder builder=new StringBuilder();
-        builder.append(name);
-        for(Map.Entry<String, String> map : extension.entrySet()){
+        builder.append(getName());
+        for(Map.Entry<String, String> map : getExtension().entrySet()){
             builder.append(" ").append(map.getKey()).append("='").append(map.getValue()).append("'");
         }
 

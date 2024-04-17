@@ -23,6 +23,10 @@ public class MainTag {
         mainTag.put(key, value);
     }
 
+    public String getName(){
+        return name;
+    }
+
     public Map<Header, Content> getMainTag(){
         return mainTag;
     }
@@ -66,15 +70,15 @@ public class MainTag {
     @Override
     public String toString(){
         StringBuilder builder=new StringBuilder();
-        builder.append("<").append(name).append(">\n");
-        for(Map.Entry<Header, Content> tag: mainTag.entrySet()) {
+        builder.append("<").append(getName()).append(">\n");
+        for(Map.Entry<Header, Content> tag: getMainTag().entrySet()) {
             builder.append("\t<").append(tag.getKey().toString()).append(">\n");
             if(tag.getValue()!=null) {
                     builder.append(tag.getValue().toString());
             }
                     builder.append("\t</").append(tag.getKey().getName()).append(">\n");
         }
-        builder.append("</").append(name).append(">");
+        builder.append("</").append(getName()).append(">");
         return builder.toString();
     }
 }

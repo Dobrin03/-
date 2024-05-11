@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/Main.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main_class/Content.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main_class/Header.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main_class/MainTag.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/LoadUnloadMenu.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/MenuMap.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/file_actions/FileCreate.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/file_actions/ReadFile.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/file_actions/SaveInSameFile.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/file_actions/WriteFile.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/items/Action.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/items/Child.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/items/Children.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/items/Delete.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/items/Exit.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/items/Help.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/items/NewChild.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/items/Print.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/items/Save.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/items/SaveAs.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/items/Select.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/items/Set.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/items/Text.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/items/XPath.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/load_unload_file/Close.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/load_unload_file/MainTagState.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/load_unload_file/Open.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/program_actions/GetChild.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/program_actions/GetChildren.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/program_actions/GetDelete.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/program_actions/GetNewChild.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/program_actions/GetSelect.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/program_actions/GetSet.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/program_actions/GetText.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/program_actions/GetXPath.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/menu/program_actions/Search.java" charset="windows-1251" />
+  </component>
+</project>

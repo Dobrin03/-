@@ -3,19 +3,19 @@ package menu.program_actions;
 import main_class.MainTag;
 
 /**
- * РљР»Р°СЃ СЃ РјРµС‚РѕРґ Р·Р° РѕРїРµСЂР°С†РёРё Р·Р° РёР·РїСЉР»РЅРµРЅРёРµ РЅР° РїСЂРѕСЃС‚Рё XPath 2.0 Р·Р°СЏРІРєРё РєСЉРј РґР°РґРµРЅ РµР»РµРјРµРЅС‚.
+ * Клас с метод за операции за изпълнение на прости XPath 2.0 заявки към даден елемент.
  *
  * @see MainTag
  * @see Search
  */
 public class GetXPath {
     /**
-     * РњРµС‚РѕРґ Р·Р° РѕРїРµСЂР°С†РёРё Р·Р° РёР·РїСЉР»РЅРµРЅРёРµ РЅР° РїСЂРѕСЃС‚Рё XPath 2.0 Р·Р°СЏРІРєРё РєСЉРј РґР°РґРµРЅ РµР»РµРјРµРЅС‚. РџСЂРѕРіСЂР°РјР°С‚Р° РїСЂРѕРІРµСЂСЏРІР° Р·Р°
-     * СЃРїРµС†РёР°Р»РЅРёС‚Рµ СЃРёРјРІРѕР»Рё РЅР° Р·Р°СЏРІРєРёС‚Рµ, СЃР»РµРґ РєРѕРµС‚Рѕ СЃ РїРѕРјРѕС‰Р° РЅР° С„СѓРЅРєС†РёРёС‚Рµ РЅР° РєР»Р°СЃ Search РёР·РІРµР¶РґР° Р¶РµР»Р°РЅРёСЏ СЂРµР·СѓР»С‚Р°С‚.
+     * Метод за операции за изпълнение на прости XPath 2.0 заявки към даден елемент. Програмата проверява за
+     * специалните символи на заявките, след което с помоща на функциите на клас Search извежда желания резултат.
      *
-     * @param mainTag РєР»Р°СЃ СЃСЉРґСЉСЂР¶Р°С‰ РґР°РЅРЅРёС‚Рµ РЅР° С„Р°Р№Р»Р°.
-     * @param command РЅРёР· СЃ РєРѕРјР°РЅРґР° Р·Р° СЃСѓРѕС‚РІРµС‚РЅР°С‚Р° Р·Р°СЏРІРєР°.
-     * @return РЅРёР· СЃ СЂРµР·СѓР»С‚Р°С‚ РѕС‚ СЃСЉРѕС‚РІРµС‚РЅР°С‚Р° Р·Р°СЏРІРєР°.
+     * @param mainTag клас съдържащ данните на файла.
+     * @param command низ с команда за суответната заявка.
+     * @return низ с резултат от съответната заявка.
      */
     public String action(MainTag mainTag, String command) {
         StringBuilder builder = new StringBuilder();
@@ -34,14 +34,14 @@ public class GetXPath {
                 id = data.substring(data.indexOf('[') + 1, data.indexOf(']'));
                 attribute = data.substring(0, data.indexOf('['));
                 if (!search.searchForAttributeById(mainTag, tagName, id, attribute).isEmpty()) {
-                    builder.append(attribute).append(" РЅР° С‚Р°Рі ").append(tagName).append(" СЃ id ")
+                    builder.append(attribute).append(" на таг ").append(tagName).append(" с id ")
                             .append(id).append(" e: ")
                             .append(search.searchForAttributeById(mainTag, tagName, id, attribute));
                 }
             } else {
                 if (!search.searchForAttributeList(mainTag, tagName, data).isEmpty()) {
-                    builder.append("РЎРїРёСЃСЉРє СЃСЉСЃ РІСЃРёС‡РєРё ").append(data).append(" РІСЉРІ ")
-                            .append(tagName).append(" С‚Р°РіРѕРІРµ РІСЉРІ С„Р°Р№Р»Р°:\n")
+                    builder.append("Списък със всички ").append(data).append(" във ")
+                            .append(tagName).append(" тагове във файла:\n")
                             .append(search.searchForAttributeList(mainTag, tagName, data));
                 }
             }
@@ -49,7 +49,7 @@ public class GetXPath {
             tagName = command.substring(0, command.indexOf('('));
             extension=command.substring(command.indexOf('@')+1, command.indexOf(')'));
             if(!search.searchForExtensionList(mainTag, tagName, extension).isEmpty()) {
-                builder.append("РЎРїРёСЃСЉРє СЃ РІСЃРёС‡РєРё id Р·Р° С‚Р°РіР° ").append(tagName)
+                builder.append("Списък с всички id за тага ").append(tagName)
                         .append(":\n").append(search.searchForExtensionList(mainTag, tagName, extension));
             }
         }else if (command.contains("=")) {
@@ -60,8 +60,8 @@ public class GetXPath {
             String searchTag = data.substring(data.indexOf('/') + 1);
 
             if(!search.searchForAttributeListByUniqueAttribute(mainTag, tagName, compareTag, value, searchTag).isEmpty()){
-                builder.append("РЎРїРёСЃСЉРє СЃ РІСЃРёС‡РєРё ").append(searchTag).append(" РІ С‚Р°Рі ").append(tagName)
-                        .append(", Р·Р° РєРѕРёС‚Рѕ ").append(compareTag).append(" e СЃСЉСЃ СЃС‚РѕР№РЅРѕСЃС‚ ").append(value).append(":\n")
+                builder.append("Списък с всички ").append(searchTag).append(" в таг ").append(tagName)
+                        .append(", за които ").append(compareTag).append(" e със стойност ").append(value).append(":\n")
                         .append(search.searchForAttributeListByUniqueAttribute(mainTag, tagName, compareTag, value, searchTag));
             }
 

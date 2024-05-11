@@ -3,18 +3,36 @@ package menu.file_actions;
 import main_class.Content;
 import main_class.Header;
 import main_class.MainTag;
-import menu.items.Action;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.Scanner;
 
+/**
+ * Клас, който чете файл и записва данните в програмата.
+ *
+ * @see main_class
+ */
 public class ReadFile {
+    /**
+     * fileReader представлява скенер, който чете файла ред по ред.
+     */
     private Scanner fileReader;
+    /**
+     * fileName представлява низ, който съдържа пътеката с името на файла.
+     */
     private String fileName;
+    /**
+     * file представлява файлът, от който програмата ще вземе данните.
+     */
     private File file;
 
+    /**
+     * Конструктор на класа. Създава файл, от който ще четем и го зарежда в скенера, ако той съществува.
+     *
+     * @param fileName низ с пътеката и името на файла.
+     * @throws IOException иключение за работа с файлове.
+     */
     public ReadFile(String fileName) throws IOException {
         this.fileName=fileName;
         file=new File(fileName+".xml");
@@ -23,10 +41,21 @@ public class ReadFile {
         }
     }
 
+    /**
+     * Метод за достъп до файла.
+     *
+     * @return връща променливата, съдржаща файла.
+     */
     public File getFile(){
         return file;
     }
 
+    /**
+     * Методът, който чете файла. Файлът се чете ред по ред, проверява данните и ги записва нужната
+     * информация в съответния клас, от който потребителя може да ги достигне от програмата.
+     *
+     * @return връща класа със записаните данни от файла.
+     */
     public MainTag action(){
         MainTag mainTag=new MainTag(null);
         Header header = null;

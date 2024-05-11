@@ -1,12 +1,22 @@
 package menu.program_actions;
 
-import main_class.Content;
-import main_class.Header;
 import main_class.MainTag;
 
-import java.util.Map;
-
+/**
+ * Клас с метод за операции за изпълнение на прости XPath 2.0 заявки към даден елемент.
+ *
+ * @see MainTag
+ * @see Search
+ */
 public class GetXPath {
+    /**
+     * Метод за операции за изпълнение на прости XPath 2.0 заявки към даден елемент. Програмата проверява за
+     * специалните символи на заявките, след което с помоща на функциите на клас Search извежда желания резултат.
+     *
+     * @param mainTag клас съдържащ данните на файла.
+     * @param command низ с команда за суответната заявка.
+     * @return низ с резултат от съответната заявка.
+     */
     public String action(MainTag mainTag, String command) {
         StringBuilder builder = new StringBuilder();
         Search search = new Search();

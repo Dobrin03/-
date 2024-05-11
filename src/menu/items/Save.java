@@ -2,13 +2,27 @@ package menu.items;
 
 import main_class.MainTag;
 import menu.file_actions.SaveInSameFile;
-import menu.load_unload_file.Open;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.Scanner;
 
+/**
+ * Клас имплеметиращ интерфейсът Action за достъп до метода за записване на данните в отворения файл.
+ *
+ * @see MainTag
+ * @see SaveInSameFile
+ * @see Action
+ */
 public class Save implements Action{
+    /**
+     * Имплементация на интерфейсният метод. Проверява дали броя параметри, нужни за функицята,
+     * е точен и ако не е, извежда подходящо съобщение. В противен случай, програмата извлича параметрите
+     * в променливи и извършва желаната функция.
+     *
+     * @param mainTag клас съдържащ данните на файла.
+     * @param data масив от низове, съдържащи параметри за функциите на програмата.
+     * @param file низ съдържащ пътеката с името на файла, който ще обработваме.
+     */
     @Override
     public void action(MainTag mainTag, String[] data, String file) throws IOException {
         if(data.length==1){

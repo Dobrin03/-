@@ -7,7 +7,24 @@ import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+/**
+ * Главен клас, от който потребителите могат да работят с програмата.
+ *
+ * @author Добрин Петров
+ * @see MenuMap
+ * @see LoadUnloadMenu
+ * @see MenuMap
+ */
 public class Main {
+    /**
+     * Това е главния метод, който стартира програмата. Програмта изчаква въвеждането на команда, след което я разделя на
+     * параметри и ги изпраща към съответния клас за изпълнение. Това е извърша в цикъл do-while, докато не се въведе команда
+     * за излизане на програмата.
+     *
+     * @param args съхранява входните команди за програмата.
+     * @throws IOException иключение за работа с файлове.
+     */
     public static void main(String[] args) throws IOException {
         MenuMap menuMap=new MenuMap();
         LoadUnloadMenu loadUnloadMenu=new LoadUnloadMenu();

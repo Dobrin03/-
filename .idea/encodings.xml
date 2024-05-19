@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/doc/index-files/index-2.html" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/Main.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main_class/Content.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main_class/Header.java" charset="windows-1251" />
@@ -37,5 +38,6 @@
     <file url="file://$PROJECT_DIR$/src/menu/program_actions/GetText.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/menu/program_actions/GetXPath.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/menu/program_actions/Search.java" charset="windows-1251" />
+    <file url="PROJECT" charset="windows-1251" />
   </component>
 </project>
